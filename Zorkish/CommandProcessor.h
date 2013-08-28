@@ -11,6 +11,6 @@ public:
 	CommandProcessor();
 	~CommandProcessor();
 
-	std::string CommandProcessor::Process(World &world, const std::string &input) //returns error, or "" on success
+	std::string CommandProcessor::Process(World &world, const std::string &input); //returns error, or "" on success
 };
 

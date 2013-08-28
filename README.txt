@@ -1,6 +1,9 @@
-Zorkish Game for Games Programming subject at university.
+Zorkish - based on Zork
 
 Current State:
-- Some initial code that will be useful even without full spec being released.
+- 1/2 Command Processor
+- Game State Management
 
 TODO:
+- Use .get for non-blocking game loop
+- http://stackoverflow.com/questions/582331/is-there-a-way-to-instantiate-objects-from-a-string-holding-their-class-name

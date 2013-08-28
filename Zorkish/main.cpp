@@ -1,10 +1,7 @@
-#include "CommandProcessor.h"
+#include "StateManager.h"
 
 int main() {
-	CommandProcessor cmdProc;
-	cmdProc.Process("test");
-	cmdProc.Process("test string 1 2 3");
-	cmdProc.Process("");
-
+	StateManager stateMngr;
+	stateMngr.Run();
 	return 0;
 }
