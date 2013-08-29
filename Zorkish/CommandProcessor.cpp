@@ -29,13 +29,13 @@ vector<string>* Tokenize(string input, string delimiter) {
 }
 
 //Returns error, or "" on success
-string CommandProcessor::Process(World &world, const string &input) {
+string CommandProcessor::Process(ZorkGame *zorkGame, const string &input) {
 	vector<string>* tokenised = Tokenize(input, " ");
 
 	string error("");
 	bool foundCommand = _commands.find((*tokenised)[0]) != _commands.end();
 	if (foundCommand) 
-		error = _commands[(*tokenised)[0]]->Execute(world, tokenised);
+		error = _commands[(*tokenised)[0]]->Execute(zorkGame, tokenised);
 	
 	delete tokenised;
 	return error;

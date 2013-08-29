@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ZorkGame.h"
 #include "Command.h"
 #include <map>
 
@@ -11,6 +12,6 @@ public:
 	CommandProcessor();
 	~CommandProcessor();
 
-	std::string CommandProcessor::Process(World &world, const std::string &input); //returns error, or "" on success
+	std::string CommandProcessor::Process(ZorkGame *zorkGame, const std::string &input); //returns error, or "" on success
 };
 
