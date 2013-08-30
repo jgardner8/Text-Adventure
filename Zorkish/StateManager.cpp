@@ -4,14 +4,9 @@
 
 using namespace std;
 
-StateManager::StateManager() {
-	CurrentState = &StateManager::MenuState;
+StateManager::StateManager() : _zorkGame() {
+	_currentState = &StateManager::MenuState;
 	_currentAdventure = ' '; //null adventure
-}
-
-StateManager::~StateManager() {
-	if (_currentAdventure != ' ')
-		delete _zorkGame;
 }
 
 void StateManager::MenuState() {
@@ -24,19 +19,19 @@ void StateManager::MenuState() {
 
 	switch (GetInputBlocking()) {
 	case 'A':
-		CurrentState = &StateManager::AboutState;
+		_currentState = &StateManager::AboutState;
 		break;
 	case 'H':
-		CurrentState = &StateManager::HelpState;
+		_currentState = &StateManager::HelpState;
 		break;
 	case 'S':
-		CurrentState = &StateManager::SelectAdventureState;
+		_currentState = &StateManager::SelectAdventureState;
 		break;
 	case 'F':
-		CurrentState = &StateManager::HallOfFameState;
+		_currentState = &StateManager::HallOfFameState;
 		break;
 	case 'Q':
-		CurrentState = nullptr; //exit state manager (and effectively, the game)
+		_currentState = nullptr; //exit state manager (and effectively, the game)
 		break;
 	}
 }
@@ -46,7 +41,7 @@ void StateManager::AboutState() {
 		 << "\t[Q]uit" << endl;
 
 	if (GetInputBlocking() == 'Q')
-		CurrentState = &StateManager::MenuState;
+		_currentState = &StateManager::MenuState;
 }
 
 void StateManager::HelpState() {
@@ -54,7 +49,7 @@ void StateManager::HelpState() {
 	     << "\t[Q]uit" << endl;
 
 	if (GetInputBlocking() == 'Q')
-		CurrentState = &StateManager::MenuState;
+		_currentState = &StateManager::MenuState;
 }
 
 void StateManager::SelectAdventureState() {
@@ -66,18 +61,20 @@ void StateManager::SelectAdventureState() {
 	char input = GetInputBlocking();
 	if (input == 'E' || input == 'N') {
 		if (_currentAdventure != input) {
-			if (_currentAdventure != ' ') //null adventure
-				delete _zorkGame;
-			_zorkGame = new ZorkGame(this);
+			_zorkGame = ZorkGame();
 			_currentAdventure = input;
 		}
-		CurrentState = &StateManager::GameplayState;
+		_currentState = &StateManager::GameplayState;
 	} else if (input == 'Q')
-		CurrentState = &StateManager::MenuState;
+		_currentState = &StateManager::MenuState;
 }
 
 void StateManager::GameplayState() {
-	_zorkGame->Run();	
+	string exitReason = _zorkGame.Run();
+	if (exitReason == "MENU")
+		_currentState = &StateManager::MenuState;
+	else if (exitReason == "HIGHSCORES")
+		_currentState = &StateManager::HighScoreState;
 }
 
 void StateManager::HighScoreState() {
@@ -85,7 +82,7 @@ void StateManager::HighScoreState() {
 	     << "\t[Q]uit" << endl;
 
 	if (GetInputBlocking() == 'Q')
-		CurrentState = &StateManager::MenuState;
+		_currentState = &StateManager::MenuState;
 }
 
 void StateManager::HallOfFameState() {
@@ -93,12 +90,12 @@ void StateManager::HallOfFameState() {
 	     << "\t[Q]uit" << endl;
 
 	if (GetInputBlocking() == 'Q')
-		CurrentState = &StateManager::MenuState;
+		_currentState = &StateManager::MenuState;
 }
 
 void StateManager::Run() {
-	while (CurrentState != nullptr) {
+	while (_currentState != nullptr) {
 		cout << endl << "----------------------------" << endl;
-		(this->*CurrentState)();		
+		(this->*_currentState)();		
 	}
 }

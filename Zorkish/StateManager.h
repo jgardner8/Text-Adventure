@@ -2,16 +2,13 @@
 
 #include "ZorkGame.h"
 
-class ZorkGame;
-
 class StateManager {
 private:
 	char _currentAdventure;
-	ZorkGame *_zorkGame; //because of circular reference this must be a pointer
-	friend ZorkGame;
+	ZorkGame _zorkGame;
 
 	//State Pointer
-	void (StateManager::*CurrentState)(); //points to the current state function
+	void (StateManager::*_currentState)(); //points to the current state function
 	//State Methods
 	void MenuState(); //default
 	void AboutState();
@@ -23,7 +20,6 @@ private:
 
 public:
 	StateManager();
-	~StateManager();
 
 	void Run();
 };

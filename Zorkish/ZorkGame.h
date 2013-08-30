@@ -1,18 +1,16 @@
 #pragma once
 
-#include "StateManager.h"
+#include <unordered_map>
+#include "aCommand.h"
+#include <string>
 
-class StateManager;
-
-//PROOF OF CONCEPT ONLY
 class ZorkGame {
 private:
-	StateManager *_stateMngr;
-	int _score;
+	std::unordered_map<std::string, aCommand*> _commands;
 
 public:
-	ZorkGame(StateManager *_stateMngr);
+	ZorkGame();
 
-	void Run();
+	std::string Run(); //returns reason for exiting (next state): { "MENU", "HIGHSCORES" }
 };
 

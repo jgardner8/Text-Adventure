@@ -1,4 +1,5 @@
 #include "StateManager.h"
+#include "aComponent.h"
 
 int main() {
 	StateManager stateMngr;

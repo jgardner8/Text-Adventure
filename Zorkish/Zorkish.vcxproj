@@ -77,14 +77,30 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CommandProcessor.cpp" />
-    <ClCompile Include="Input.h" />
+    <ClCompile Include="Damage.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Health.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Room.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="ZorkGame.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Command.h" />
+    <ClInclude Include="aCommand.h" />
+    <ClInclude Include="aComponent.h" />
     <ClInclude Include="CommandProcessor.h" />
+    <ClInclude Include="Damage.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="Health.h" />
+    <ClInclude Include="aIdentifiable.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="Inventory.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="MathFunc.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Room.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="ZorkGame.h" />
   </ItemGroup>

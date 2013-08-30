@@ -4,21 +4,18 @@
 
 using namespace std;
 
-ZorkGame::ZorkGame(StateManager *stateMngr) {
-	_score = 0;
-	_stateMngr = stateMngr;
+ZorkGame::ZorkGame() {
 }
 
-void ZorkGame::Run() {
-	cout << "Gameplay State" << endl
-	     << "\t[A]chieve high score" << endl
-	     << "\t[Q]uit" << endl;
+string ZorkGame::Run() {
+	cout << "Welcome to Zorkish!" << endl
+	     << "Enter menu to go back to the main menu at any time." << endl << endl;
 
-	char input;
+	string input;
 	do {
-		input = GetInputBlocking();
-		cout << "Score: " << ++_score;
-	} while (input != 'Q' && input != 'A');
+		input = GetInputStrBlocking();
 
-	_stateMngr->CurrentState = (input == 'Q') ? &StateManager::MenuState : &StateManager::HighScoreState;
+	} while (input != "MENU" && input != "HIGHSCORES");
+
+	return input;
 }
