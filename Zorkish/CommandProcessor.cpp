@@ -3,6 +3,7 @@
 #include <set>
 #include "Input.h"
 #include "MoveCommand.h"
+#include "ExitCommand.h"
 
 using namespace std;
 
@@ -16,16 +17,23 @@ CommandProcessor::CommandProcessor() {
 	_commands["E"] = move;
 	_commands["U"] = move;
 	_commands["D"] = move;
+
+	aCommand *exit = new ExitCommand();
+	_commands["EXIT"] = exit;
+	_commands["MENU"] = exit;
+	_commands["QUIT"] = exit;
+	_commands["Q"] = exit;
+	_commands["HISCORES"] = exit;
+	_commands["HIGHSCORES"] = exit;
+	_commands["HALLOFFAME"] = exit;
 }
 
 CommandProcessor::~CommandProcessor() {
-	cout << "destroy";
 	set<aCommand*> uniqueCmds;
 	for (auto kvp : _commands)
 		uniqueCmds.insert(kvp.second);
 	for (auto cmd : uniqueCmds)
 		delete cmd;
-	cout << "complete";
 }
 
 string CommandProcessor::Process(Player &player, const string &input) {

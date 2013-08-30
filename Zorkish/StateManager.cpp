@@ -69,7 +69,7 @@ void StateManager::SelectAdventureState() {
 		if (_currentAdventure != input) {
 			if (_zorkGame != nullptr)
 				delete _zorkGame;
-			_zorkGame = new ZorkGame(); //BROKEN, DESTROYS COMMANDS? ASSIGNMENT OPERATOR
+			_zorkGame = new ZorkGame(); 
 			_currentAdventure = input;
 		}
 		_currentState = &StateManager::GameplayState;
@@ -79,10 +79,7 @@ void StateManager::SelectAdventureState() {
 
 void StateManager::GameplayState() {
 	string exitReason = _zorkGame->Run();
-	if (exitReason == "MENU")
-		_currentState = &StateManager::MenuState;
-	else if (exitReason == "HIGHSCORES")
-		_currentState = &StateManager::HighScoreState;
+	_currentState = exitReason[0] == 'H' ? &StateManager::HighScoreState : &StateManager::MenuState;
 }
 
 void StateManager::HighScoreState() {

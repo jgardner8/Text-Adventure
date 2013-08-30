@@ -20,12 +20,13 @@ string ZorkGame::Run() {
 	     << "Enter menu to go back to the main menu at any time." << endl << endl;
 	FlushCin();
 
-	string input;
+	string input, output;
 	do {
 		cout << _player.location()->desc() << endl;
 		input = GetInputStrBlocking();
-		cout << _cmdProcessor.Process(_player, input) << endl << endl;
-	} while (input != "MENU" && input != "HIGHSCORES");
+		output = _cmdProcessor.Process(_player, input);
+		cout << output << endl << endl;
+	} while (output != "Pausing...");
 
 	return input;
 }

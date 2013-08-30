@@ -95,6 +95,7 @@
     <ClInclude Include="CommandProcessor.h" />
     <ClInclude Include="Damage.h" />
     <ClInclude Include="aEntity.h" />
+    <ClInclude Include="ExitCommand.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="aIdentifiable.h" />
     <ClInclude Include="Input.h" />
