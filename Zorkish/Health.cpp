@@ -1,6 +1,6 @@
 #include "Health.h"
 
-Health::Health(int startHealth, std::function<void()> callOnDeath) : aComponent("health") {
+Health::Health(int startHealth, std::function<void()> callOnDeath) : aComponent("HEALTH") {
 	_health = startHealth;
 	_callOnDeath = callOnDeath;
 }

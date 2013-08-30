@@ -3,11 +3,15 @@
 
 using namespace std;
 
-vector<aComponent>::iterator aEntity::FindComponent(const string &id) {
-	return find_if(begin(_components), end(_components), [id] (aComponent comp) { return id == comp.id(); } ); 
+aEntity::~aEntity() {
+	_components.clear();
 }
 
-void aEntity::AddComponent(const aComponent &component) { 
+vector<aComponent*>::iterator aEntity::FindComponent(const string &id) {
+	return find_if(begin(_components), end(_components), [id] (aComponent *comp) { return id == comp->id(); } ); 
+}
+
+void aEntity::AddComponent(aComponent *component) { 
 	_components.push_back(component);
 }
 
@@ -21,5 +25,5 @@ bool aEntity::ContainsComponent(const string &id) {
 
 aComponent* aEntity::GetComponent(const string &id) { 
 	auto it = FindComponent(id);
-	return it == end(_components) ? nullptr : &(*it);
+	return it == end(_components) ? nullptr : *it;
 }

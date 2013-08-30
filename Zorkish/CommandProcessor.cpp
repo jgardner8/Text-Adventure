@@ -4,6 +4,7 @@
 #include "Input.h"
 #include "MoveCommand.h"
 #include "ExitCommand.h"
+#include "LookCommand.h"
 
 using namespace std;
 
@@ -17,6 +18,12 @@ CommandProcessor::CommandProcessor() {
 	_commands["E"] = move;
 	_commands["U"] = move;
 	_commands["D"] = move;
+	_commands["NORTH"] = move;
+	_commands["SOUTH"] = move;
+	_commands["EAST"] = move;
+	_commands["WEST"] = move;
+	_commands["UP"] = move;
+	_commands["DOWN"] = move;
 
 	aCommand *exit = new ExitCommand();
 	_commands["EXIT"] = exit;
@@ -26,6 +33,11 @@ CommandProcessor::CommandProcessor() {
 	_commands["HISCORES"] = exit;
 	_commands["HIGHSCORES"] = exit;
 	_commands["HALLOFFAME"] = exit;
+
+	aCommand *look = new LookCommand();
+	_commands["LOOK"] = look;
+	_commands["FIND"] = look;
+	_commands["LOCATE"] = look;
 }
 
 CommandProcessor::~CommandProcessor() {

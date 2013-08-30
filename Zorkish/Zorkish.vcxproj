@@ -82,6 +82,7 @@
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="lib\tinyxml2.cpp" />
+    <ClCompile Include="LookCommand.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MoveCommand.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -102,6 +103,7 @@
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="lib\tinyxml2.h" />
+    <ClInclude Include="LookCommand.h" />
     <ClInclude Include="MathFunc.h" />
     <ClInclude Include="MoveCommand.h" />
     <ClInclude Include="Player.h" />

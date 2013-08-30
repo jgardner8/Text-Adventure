@@ -5,5 +5,5 @@
 
 class aComponent : public aIdentifiable {
 protected:
-	aComponent(std::string id) : aIdentifiable(id) {}
+	aComponent(std::string id) : aIdentifiable(id) { }
 };

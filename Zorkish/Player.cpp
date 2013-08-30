@@ -8,7 +8,7 @@ using namespace std;
 
 Player::Player(Room *location) {
 	_location = location;
-	AddComponent(Inventory());
-	AddComponent(Health(100, [](){ cout << "You're dead!"; }));
-	AddComponent(Damage(10, 20));
+	AddComponent(new Inventory());
+	AddComponent(new Health(100, [](){ cout << "You're dead!"; }));
+	AddComponent(new Damage(10, 20));
 }

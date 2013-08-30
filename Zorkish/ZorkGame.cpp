@@ -1,5 +1,7 @@
 #include "ZorkGame.h"
 #include "Input.h"
+#include "Item.h"
+#include "Inventory.h"
 #include <iostream>
 
 using namespace std;
@@ -13,6 +15,18 @@ void ZorkGame::CreateWorld() {
 	_map.push_back(Room("An old house with a fireplace. There's a deck of stained cards on the floor and a door to the south."));
 	_map[0].ConnectTo(&_map[1], Direction::North);
 	_player.location(&_map[0]);
+
+	Item sword = Item("sword", "A large broadsword with a rusty blade");
+	Item bag = Item("bag", "A blue school bag");
+	Inventory *bagContents = new Inventory();
+	bag.AddComponent(bagContents);
+	Item paper = Item("paper", "A sheet of poorly-recycled paper");
+	bagContents->Add(paper);
+
+	Inventory *roomContents = (Inventory*)_map[0].GetComponent("INVENTORY");
+	roomContents->Add(sword);
+	roomContents = (Inventory*)_map[1].GetComponent("INVENTORY");
+	roomContents->Add(bag);
 }
 
 string ZorkGame::Run() {
@@ -20,12 +34,13 @@ string ZorkGame::Run() {
 	     << "Enter menu to go back to the main menu at any time." << endl << endl;
 	FlushCin();
 
+	cout << _player.location()->desc() << endl;
+	
 	string input, output;
 	do {
-		cout << _player.location()->desc() << endl;
 		input = GetInputStrBlocking();
 		output = _cmdProcessor.Process(_player, input);
-		cout << output << endl << endl;
+		cout << endl << output << endl;
 	} while (output != "Pausing...");
 
 	return input;

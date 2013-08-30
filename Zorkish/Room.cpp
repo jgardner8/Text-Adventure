@@ -5,7 +5,7 @@
 using namespace std;
 
 Room::Room(string desc) {
-	AddComponent(Inventory());
+	AddComponent(new Inventory());
 	_desc = desc;
 }
 
