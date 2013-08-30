@@ -78,10 +78,12 @@
   <ItemGroup>
     <ClCompile Include="CommandProcessor.cpp" />
     <ClCompile Include="Damage.cpp" />
-    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="aEntity.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="lib\tinyxml2.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MoveCommand.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="StateManager.cpp" />
@@ -92,17 +94,22 @@
     <ClInclude Include="aComponent.h" />
     <ClInclude Include="CommandProcessor.h" />
     <ClInclude Include="Damage.h" />
-    <ClInclude Include="Entity.h" />
+    <ClInclude Include="aEntity.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="aIdentifiable.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="lib\tinyxml2.h" />
     <ClInclude Include="MathFunc.h" />
+    <ClInclude Include="MoveCommand.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="ZorkGame.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="diagrams\Main Classes.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

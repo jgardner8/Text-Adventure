@@ -1,9 +1,10 @@
 #pragma once
 
 #include "aIdentifiable.h"
+#include "aEntity.h"
 #include <string>
 
-class Item : public aIdentifiable {
+class Item : public aIdentifiable, public aEntity {
 private:
 	std::string _desc;
 

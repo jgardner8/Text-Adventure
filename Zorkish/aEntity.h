@@ -3,11 +3,14 @@
 #include "aComponent.h"
 #include <vector>
 
-class Entity {
+class aEntity {
 private:
 	std::vector<aComponent> _components;
 
 	std::vector<aComponent>::iterator FindComponent(const std::string &id); //returns end(vector) when not found
+
+protected:
+	aEntity() {}
 
 public:
 	void AddComponent(const aComponent &component);

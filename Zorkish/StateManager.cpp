@@ -4,9 +4,15 @@
 
 using namespace std;
 
-StateManager::StateManager() : _zorkGame() {
+StateManager::StateManager() {
 	_currentState = &StateManager::MenuState;
 	_currentAdventure = ' '; //null adventure
+	_zorkGame = nullptr;
+}
+
+StateManager::~StateManager() {
+	if (_zorkGame != nullptr)
+		delete _zorkGame;
 }
 
 void StateManager::MenuState() {
@@ -61,7 +67,9 @@ void StateManager::SelectAdventureState() {
 	char input = GetInputBlocking();
 	if (input == 'E' || input == 'N') {
 		if (_currentAdventure != input) {
-			_zorkGame = ZorkGame();
+			if (_zorkGame != nullptr)
+				delete _zorkGame;
+			_zorkGame = new ZorkGame(); //BROKEN, DESTROYS COMMANDS? ASSIGNMENT OPERATOR
 			_currentAdventure = input;
 		}
 		_currentState = &StateManager::GameplayState;
@@ -70,7 +78,7 @@ void StateManager::SelectAdventureState() {
 }
 
 void StateManager::GameplayState() {
-	string exitReason = _zorkGame.Run();
+	string exitReason = _zorkGame->Run();
 	if (exitReason == "MENU")
 		_currentState = &StateManager::MenuState;
 	else if (exitReason == "HIGHSCORES")

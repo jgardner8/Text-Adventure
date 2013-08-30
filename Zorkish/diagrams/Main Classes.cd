@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Player">
+    <Position X="0.5" Y="3.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAAQAAAAA=</HashCode>
+      <FileName>Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Item">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <InheritanceLine Type="aIdentifiable" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.375" Y="2.997" />
+        <Point X="7.375" Y="4.375" />
+        <Point X="6.75" Y="4.375" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAEAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Item.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Room">
+    <Position X="3.25" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAADAAAAAAACAAAEAAgAAAQAAAAAA=</HashCode>
+      <FileName>Room.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="aEntity">
+    <Position X="2.75" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIIAAgAAAABABAAAAABAAEAAAAAAAAAAA=</HashCode>
+      <FileName>aEntity.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="aComponent">
+    <Position X="8" Y="4" Width="1.5" />
+    <InheritanceLine Type="aIdentifiable" FixedToPoint="true">
+      <Path>
+        <Point X="7.375" Y="2.997" />
+        <Point X="7.375" Y="4.375" />
+        <Point X="8" Y="4.375" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>aComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Inventory">
+    <Position X="7.75" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAEAAAAAABAAAABAIAAAAAAAAAgBQAAA=</HashCode>
+      <FileName>Inventory.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Health">
+    <Position X="10" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AQAACAAAAAEAAAAAIAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Health.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Damage">
+    <Position X="5.75" Y="6" Width="1.75" />
+    <InheritanceLine Type="aComponent" FixedToPoint="true">
+      <Path>
+        <Point X="8.75" Y="5.233" />
+        <Point X="8.75" Y="5.625" />
+        <Point X="7.062" Y="5.625" />
+        <Point X="7.062" Y="6" />
+      </Path>
+      <InheritanceModifierLabel ManuallyPlaced="true">
+        <Position X="-0.411" Y="0.096" />
+      </InheritanceModifierLabel>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAIAACAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Damage.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="aIdentifiable">
+    <Position X="6.5" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAgA=</HashCode>
+      <FileName>aIdentifiable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

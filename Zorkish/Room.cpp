@@ -1,9 +1,12 @@
 #include "Room.h"
+#include "Inventory.h"
+#include <stdexcept>
 
 using namespace std;
 
-Room::Room() {
-
+Room::Room(string desc) {
+	AddComponent(Inventory());
+	_desc = desc;
 }
 
 Room::~Room() {
@@ -13,7 +16,9 @@ Room::~Room() {
 }
 
 Direction Room::GetOppositeDirection(Direction dir) {
-	return (Direction)(((int)dir & 1) == 0 ? (int)dir + 1 : (int)dir - 1);
+	if (dir == Direction::Invalid)
+		throw invalid_argument("dir == Direction::Invalid");
+	return (Direction)(((int)dir & 1) == 1 ? (int)dir + 1 : (int)dir - 1);
 }
 
 bool Room::ConnectTo(Room *room, Direction direction) {	

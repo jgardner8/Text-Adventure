@@ -12,7 +12,6 @@ private:
 
 public:
 	Inventory();
-	~Inventory();
 
 	void Add(const Item &item);
 	void Remove(const std::string &id);

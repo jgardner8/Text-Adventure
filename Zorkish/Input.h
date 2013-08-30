@@ -15,7 +15,7 @@ namespace { //removes need for .cpp file
 	
 	std::string GetInputStrBlocking() {
 		std::string input;
-		std::cin >> input;
+		getline(std::cin, input);
 		for (char &c : input) c = toupper(c);
 		return input;
 	}
@@ -32,5 +32,11 @@ namespace { //removes need for .cpp file
 		} while (pos != std::string::npos);
 		
 		return tokens;
+	}
+
+	void FlushCin() {
+		//http://stackoverflow.com/questions/257091/how-do-i-flush-the-cin-buffer
+		std::cin.clear(); //reset state
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //flush
 	}
 }

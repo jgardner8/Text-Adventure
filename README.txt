@@ -1,9 +1,8 @@
 Zorkish - based on Zork
 
 Current State:
-- 1/2 Command Processor
-- Game State Management
+- Partial completion of stream 2
 
 TODO:
-- Use .get for non-blocking game loop
+- Use .get/buffer check (slides) for non-blocking game loop
 - http://stackoverflow.com/questions/582331/is-there-a-way-to-instantiate-objects-from-a-string-holding-their-class-name

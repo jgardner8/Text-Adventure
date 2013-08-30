@@ -5,7 +5,7 @@
 class StateManager {
 private:
 	char _currentAdventure;
-	ZorkGame _zorkGame;
+	ZorkGame *_zorkGame;
 
 	//State Pointer
 	void (StateManager::*_currentState)(); //points to the current state function
@@ -20,6 +20,7 @@ private:
 
 public:
 	StateManager();
+	~StateManager();
 
 	void Run();
 };

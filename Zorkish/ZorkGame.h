@@ -1,16 +1,18 @@
 #pragma once
 
-#include <unordered_map>
-#include "aCommand.h"
+#include "CommandProcessor.h"
 #include <string>
 
 class ZorkGame {
 private:
-	std::unordered_map<std::string, aCommand*> _commands;
+	CommandProcessor _cmdProcessor;
+	Player _player;
+	std::vector<Room> _map; //A centralised place to store and later delete rooms. Structure not used for game logic.
 
 public:
 	ZorkGame();
 
+	void CreateWorld();
 	std::string Run(); //returns reason for exiting (next state): { "MENU", "HIGHSCORES" }
 };
 
