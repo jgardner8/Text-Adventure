@@ -11,8 +11,8 @@ ZorkGame::ZorkGame() {
 }
 
 void ZorkGame::CreateWorld() {
-	_map.push_back(Room("Appears to be some sort of courtyard. There's a house to the north."));
-	_map.push_back(Room("An old house with a fireplace. There's a deck of stained cards on the floor and a door to the south."));
+	_map.push_back(Room("Appears to be some sort of courtyard. There's a house to the north and a sword hidden in the grass."));
+	_map.push_back(Room("An old house with a fireplace. There is a bag in the corner and an exit to the south."));
 	_map[0].ConnectTo(&_map[1], Direction::North);
 	_player.location(&_map[0]);
 

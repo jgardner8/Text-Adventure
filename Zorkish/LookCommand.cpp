@@ -11,6 +11,7 @@ string LookCommand::LookInItem(Player &player, Inventory *roomContents, const ve
 	Item *item = roomContents->GetItem((*cmd)[2]);
 	if (item == nullptr)
 		return "I cannot find the " + (*cmd)[2];
+	
 	Inventory *itemContents = (Inventory*)item->GetComponent("INVENTORY");
 	return itemContents != nullptr 
 		? "The " + (*cmd)[2] + " contains:\n" + itemContents->Contents() 
@@ -21,9 +22,11 @@ string LookCommand::LookAtItemInItem(Player &player, Inventory *roomContents, co
 	Item *lookIn = roomContents->GetItem((*cmd)[4]);
 	if (lookIn == nullptr)
 		return "I cannot find the " + (*cmd)[2];
+	
 	Inventory *itemContents = (Inventory*)lookIn->GetComponent("INVENTORY");
 	if (itemContents == nullptr)
 		return "The " + (*cmd)[4] + " is not capable of containing items";
+	
 	Item *lookAt = itemContents->GetItem((*cmd)[2]);
 	return lookAt != nullptr ? lookAt->longDesc() : "There is no " + (*cmd)[2] + " in the " + (*cmd)[4];
 }
@@ -42,5 +45,5 @@ string LookCommand::Execute(Player &player, const vector<string> *cmd) {
 		if ((*cmd)[1] == "AT")
 			return LookAtItem(player, roomContents, cmd);
 	}
-	return "Syntax is one of: look at ITEM, look in ITEM or look at ITEM1 in ITEM2";
+	return "Syntax is one of: look at ITEM, look in ITEM, look at ITEM1 in ITEM2";
 }

@@ -28,10 +28,18 @@ Item* Inventory::GetItem(const string &id) {
 	return it == end(_items) ? nullptr : &(*it);
 }
 
-std::string Inventory::Contents() {
+string Inventory::Contents() {
 	stringstream ss;
 	for (Item item : _items) {
 		ss << "\t" << item.id() << endl;
+	}
+	return ss.str();
+} 
+
+string Inventory::LongContents() {
+	stringstream ss;
+	for (Item item : _items) {
+		ss << "\t" << item.longDesc() << endl;
 	}
 	return ss.str();
 } 

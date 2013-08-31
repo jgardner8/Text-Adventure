@@ -5,6 +5,8 @@
 #include "MoveCommand.h"
 #include "ExitCommand.h"
 #include "LookCommand.h"
+#include "TakeCommand.h"
+#include "InventoryCommand.h"
 
 using namespace std;
 
@@ -36,6 +38,17 @@ CommandProcessor::CommandProcessor() {
 
 	aCommand *look = new LookCommand();
 	_commands["LOOK"] = look;
+
+	aCommand *take = new TakeCommand();
+	_commands["TAKE"] = take;
+	_commands["STEAL"] = take;
+	_commands["PICKUP"] = take;
+
+	aCommand *inventory = new InventoryCommand();
+	_commands["INV"] = inventory;
+	_commands["INVENTORY"] = inventory;
+	_commands["ITEMS"] = inventory;
+	_commands["CARRYING"] = inventory;
 }
 
 CommandProcessor::~CommandProcessor() {

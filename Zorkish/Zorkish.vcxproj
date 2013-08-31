@@ -81,6 +81,7 @@
     <ClCompile Include="aEntity.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="InventoryCommand.cpp" />
     <ClCompile Include="lib\tinyxml2.cpp" />
     <ClCompile Include="LookCommand.cpp" />
     <ClCompile Include="main.cpp" />
@@ -88,6 +89,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="TakeCommand.cpp" />
     <ClCompile Include="ZorkGame.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +103,7 @@
     <ClInclude Include="aIdentifiable.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Inventory.h" />
+    <ClInclude Include="InventoryCommand.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="lib\tinyxml2.h" />
     <ClInclude Include="LookCommand.h" />
@@ -109,6 +112,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="StateManager.h" />
+    <ClInclude Include="TakeCommand.h" />
     <ClInclude Include="ZorkGame.h" />
   </ItemGroup>
   <ItemGroup>
