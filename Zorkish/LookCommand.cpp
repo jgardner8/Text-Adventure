@@ -9,12 +9,18 @@ string LookCommand::LookAtItem(Player &player, Inventory *roomContents, const ve
 
 string LookCommand::LookInItem(Player &player, Inventory *roomContents, const vector<string> *cmd) {
 	Item *item = roomContents->GetItem((*cmd)[2]);
+	if (item == nullptr)
+		return "I cannot find the " + (*cmd)[2];
 	Inventory *itemContents = (Inventory*)item->GetComponent("INVENTORY");
-	return itemContents != nullptr ? itemContents->Contents() : "The " + (*cmd)[2] + " is not capable of containing items";
+	return itemContents != nullptr 
+		? "The " + (*cmd)[2] + " contains:\n" + itemContents->Contents() 
+		: "The " + (*cmd)[2] + " is not capable of containing items";
 }
 
 string LookCommand::LookAtItemInItem(Player &player, Inventory *roomContents, const vector<string> *cmd) {
 	Item *lookIn = roomContents->GetItem((*cmd)[4]);
+	if (lookIn == nullptr)
+		return "I cannot find the " + (*cmd)[2];
 	Inventory *itemContents = (Inventory*)lookIn->GetComponent("INVENTORY");
 	if (itemContents == nullptr)
 		return "The " + (*cmd)[4] + " is not capable of containing items";

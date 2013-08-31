@@ -31,8 +31,7 @@ Item* Inventory::GetItem(const string &id) {
 std::string Inventory::Contents() {
 	stringstream ss;
 	for (Item item : _items) {
-		ss << "\t(" << item.id() << ") "
-		   << item.desc() << endl;
+		ss << "\t" << item.id() << endl;
 	}
 	return ss.str();
 } 

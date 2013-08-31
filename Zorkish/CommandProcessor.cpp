@@ -36,8 +36,6 @@ CommandProcessor::CommandProcessor() {
 
 	aCommand *look = new LookCommand();
 	_commands["LOOK"] = look;
-	_commands["FIND"] = look;
-	_commands["LOCATE"] = look;
 }
 
 CommandProcessor::~CommandProcessor() {
