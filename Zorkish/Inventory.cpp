@@ -4,9 +4,6 @@
 
 using namespace std;
 
-Inventory::Inventory() : aComponent("inventory") 
-{ }
-
 list<Item>::iterator Inventory::Find(const std::string &id) { 
 	return find_if(begin(_items), end(_items), [id] (Item item) { return id == item.id(); } ); 
 }

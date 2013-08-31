@@ -3,16 +3,13 @@
 
 using namespace std;
 
-aEntity::~aEntity() {
-	_components.clear();
-}
-
-vector<aComponent*>::iterator aEntity::FindComponent(const string &id) {
-	return find_if(begin(_components), end(_components), [id] (aComponent *comp) { return id == comp->id(); } ); 
+vector<shared_ptr<aComponent>>::iterator aEntity::FindComponent(const string &id) {
+	return find_if(begin(_components), end(_components), [id] (shared_ptr<aComponent> comp) { return id == comp.get()->id(); } ); 
 }
 
 void aEntity::AddComponent(aComponent *component) { 
-	_components.push_back(component);
+	auto ptr = shared_ptr<aComponent>(component);
+	_components.push_back(ptr);
 }
 
 void aEntity::RemoveComponent(const string &id) { 
@@ -25,5 +22,5 @@ bool aEntity::ContainsComponent(const string &id) {
 
 aComponent* aEntity::GetComponent(const string &id) { 
 	auto it = FindComponent(id);
-	return it == end(_components) ? nullptr : *it;
+	return it == end(_components) ? nullptr : (*it).get();
 }

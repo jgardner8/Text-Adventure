@@ -14,4 +14,3 @@ public:
 
 	std::string CommandProcessor::Process(Player &player, const std::string &input); //returns msg intended for user
 };
-

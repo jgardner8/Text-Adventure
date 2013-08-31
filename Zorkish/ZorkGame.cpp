@@ -2,6 +2,7 @@
 #include "Input.h"
 #include "Item.h"
 #include "Inventory.h"
+#include "Health.h"
 #include <iostream>
 
 using namespace std;
@@ -16,17 +17,17 @@ void ZorkGame::CreateWorld() {
 	_map[0].ConnectTo(&_map[1], Direction::North);
 	_player.location(&_map[0]);
 
-	Item sword = Item("sword", "A large broadsword with a rusty blade");
-	Item bag = Item("bag", "A blue school bag");
+	Item sword("sword", "A large broadsword with a rusty blade");
+	Item bag("bag", "A blue school bag");
 	Inventory *bagContents = new Inventory();
 	bag.AddComponent(bagContents);
-	Item paper = Item("paper", "A sheet of poorly-recycled paper");
+	Item paper("paper", "A sheet of clearly recycled paper");
 	bagContents->Add(paper);
 
-	Item box = Item("box", "A small box");
+	Item box("box", "A small box");
 	Inventory *boxContents = new Inventory();
 	box.AddComponent(boxContents);
-	Item cards = Item("cards", "A deck of worn playing cards");
+	Item cards("cards", "A deck of worn playing cards");
 	boxContents->Add(cards);
 	bagContents->Add(box);
 

@@ -15,4 +15,3 @@ public:
 	void CreateWorld();
 	std::string Run(); //returns reason for exiting (next state): { "MENU", "HIGHSCORES" }
 };
-

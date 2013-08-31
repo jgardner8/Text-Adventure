@@ -20,7 +20,7 @@ private:
 
 public:
 	StateManager();
-	~StateManager();
+	virtual ~StateManager();
 
 	void Run();
 };

@@ -1,5 +1,5 @@
 #include "StateManager.h"
-#include "aComponent.h"
+#include <vld.h>
 
 int main() {
 	StateManager stateMngr;

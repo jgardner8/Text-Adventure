@@ -11,7 +11,7 @@ private:
 	std::list<Item>::iterator Find(const std::string &id);
 
 public:
-	Inventory();
+	Inventory() : aComponent("inventory") { }
 
 	void Add(const Item &item);
 	void Remove(const std::string &id);
