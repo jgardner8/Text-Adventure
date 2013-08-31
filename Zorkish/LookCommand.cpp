@@ -21,7 +21,7 @@ string LookCommand::LookInItem(Player &player, Inventory *roomContents, const ve
 string LookCommand::LookAtItemInItem(Player &player, Inventory *roomContents, const vector<string> *cmd) {
 	Item *lookIn = roomContents->GetItem((*cmd)[4]);
 	if (lookIn == nullptr)
-		return "I cannot find the " + (*cmd)[2];
+		return "I cannot find the " + (*cmd)[4];
 	
 	Inventory *itemContents = (Inventory*)lookIn->GetComponent("INVENTORY");
 	if (itemContents == nullptr)

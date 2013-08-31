@@ -36,10 +36,17 @@ string Inventory::Contents() {
 	return ss.str();
 } 
 
-string Inventory::LongContents() {
+string Inventory::LongContents(int indentLevel) {
+	string tabs;
+	for (int i = 0; i < indentLevel; i++)
+		tabs.append("\t");
+
 	stringstream ss;
 	for (Item item : _items) {
-		ss << "\t" << item.longDesc() << endl;
+		ss << tabs << item.longDesc() << endl;
+		Inventory *inv = (Inventory*)item.GetComponent("INVENTORY");
+		if (inv != nullptr)
+			ss << inv->LongContents(indentLevel+1);
 	}
 	return ss.str();
 } 

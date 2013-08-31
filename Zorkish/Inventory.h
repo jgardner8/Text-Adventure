@@ -18,6 +18,6 @@ public:
 	bool Contains(const std::string &id);
 	Item* GetItem(const std::string &id);
 	std::string Contents();
-	std::string LongContents();
+	std::string LongContents(int indentLevel=1);
 };
 

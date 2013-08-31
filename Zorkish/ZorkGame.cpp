@@ -23,6 +23,13 @@ void ZorkGame::CreateWorld() {
 	Item paper = Item("paper", "A sheet of poorly-recycled paper");
 	bagContents->Add(paper);
 
+	Item box = Item("box", "A small box");
+	Inventory *boxContents = new Inventory();
+	box.AddComponent(boxContents);
+	Item cards = Item("cards", "A deck of worn playing cards");
+	boxContents->Add(cards);
+	bagContents->Add(box);
+
 	Inventory *roomContents = (Inventory*)_map[0].GetComponent("INVENTORY");
 	roomContents->Add(sword);
 	roomContents = (Inventory*)_map[1].GetComponent("INVENTORY");
