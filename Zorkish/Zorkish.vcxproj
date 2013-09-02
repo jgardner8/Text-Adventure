@@ -120,7 +120,8 @@
     <ClInclude Include="ZorkGame.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="diagrams\Main Classes.cd" />
+    <None Include="diagrams\CommandProcessor.cd" />
+    <None Include="diagrams\MainClasses.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
