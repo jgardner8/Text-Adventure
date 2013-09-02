@@ -22,6 +22,9 @@ Direction Room::GetOppositeDirection(Direction dir) {
 }
 
 bool Room::ConnectTo(Room *room, Direction direction) {	
+	if (direction == Direction::Invalid)
+		return false;
+
 	Direction opposite = GetOppositeDirection(direction);
 
 	if (_adjacencies.find(direction) != _adjacencies.end()
@@ -33,15 +36,23 @@ bool Room::ConnectTo(Room *room, Direction direction) {
 	return true;
 }
 
+bool Room::ConnectTo(Room *room, string direction) {	
+	return ConnectTo(room, StrToDirection(direction));
+}
+
+Direction Room::StrToDirection(string dir) {
+	return (dir == "NORTH" || dir == "N") ? Direction::North 
+		 : (dir == "SOUTH" || dir == "S") ? Direction::South
+		 : (dir == "EAST" || dir == "E") ? Direction::East
+		 : (dir == "WEST" || dir == "W") ? Direction::West
+		 : (dir == "UP" || dir == "U") ? Direction::Up
+		 : (dir == "DOWN" || dir == "D") ? Direction::Down
+		 : Direction::Invalid;
+}
+
 bool Room::MovePlayer(Player &player, string directionStr) {
-	Direction direction = 
-	    (directionStr == "NORTH" || directionStr == "N") ? Direction::North 
-	  : (directionStr == "SOUTH" || directionStr == "S") ? Direction::South
-	  : (directionStr == "EAST" || directionStr == "E") ? Direction::East
-	  : (directionStr == "WEST" || directionStr == "W") ? Direction::West
-	  : (directionStr == "UP" || directionStr == "U") ? Direction::Up
-	  : (directionStr == "DOWN" || directionStr == "D") ? Direction::Down
-	  : Direction::Invalid;
+	auto direction = StrToDirection(directionStr);
+
 	if (direction == Direction::Invalid || _adjacencies.find(direction) == _adjacencies.end())
 		return false;
 	

@@ -29,7 +29,9 @@ public:
 	virtual ~Room();
 
 	bool ConnectTo(Room *room, Direction direction); //returns success
+	bool ConnectTo(Room *room, std::string direction); //returns success
 	bool MovePlayer(Player &player, std::string directionStr); //returns success
+	Direction StrToDirection(std::string dir);
 
 	std::string desc() { return _desc; }
 };

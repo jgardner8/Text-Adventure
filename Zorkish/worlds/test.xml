@@ -1,0 +1,30 @@
+<World>
+	<Room id="1" desc="Appears to be some sort of courtyard. There's a house to the north and a sword hidden in the grass.">
+		<Inventory>
+			<Item name="sword" desc="A large broadsword with a rusty blade"></Item>
+		</Inventory>
+	
+		<Player>
+			<Inventory>
+				<Item name="ball" desc="A soccer ball the player should start with."></Item>
+			</Inventory>
+		</Player>
+	</Room>
+
+	<Room desc="An old house with a fireplace. There is a bag in the corner and an exit to the south.">
+		<ConnectTo id="1" direction="SOUTH"/>
+
+		<Inventory>
+			<Item name="bag" desc="A blue school bag">
+				<Inventory>
+					<Item name="paper" desc="A sheet of obviously recycled paper"></Item>
+					<Item name="box" desc="A small box">
+						<Inventory>
+							<Item name="cards" desc="A deck of worn playing cards"></Item>
+						</Inventory>
+					</Item>
+				</Inventory>
+			</Item>
+		</Inventory>
+	</Room>
+</World>

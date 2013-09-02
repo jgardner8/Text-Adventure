@@ -1,5 +1,6 @@
 #include "StateManager.h"
 #include "Input.h"
+#include "ZorkGameFactory.h"
 #include <iostream>
 
 using namespace std;
@@ -69,7 +70,7 @@ void StateManager::SelectAdventureState() {
 		if (_currentAdventure != input) {
 			if (_zorkGame != nullptr)
 				delete _zorkGame;
-			_zorkGame = new ZorkGame(); 
+			_zorkGame = ZorkGameFactory::FromFile("test"); 
 			_currentAdventure = input;
 		}
 		_currentState = &StateManager::GameplayState;

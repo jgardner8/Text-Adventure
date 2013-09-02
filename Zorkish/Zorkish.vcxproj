@@ -78,6 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ZorkGameFactory.cpp" />
     <ClCompile Include="CommandProcessor.cpp" />
     <ClCompile Include="Damage.cpp" />
     <ClCompile Include="aEntity.cpp" />
@@ -97,6 +98,7 @@
   <ItemGroup>
     <ClInclude Include="aCommand.h" />
     <ClInclude Include="aComponent.h" />
+    <ClInclude Include="ZorkGameFactory.h" />
     <ClInclude Include="CommandProcessor.h" />
     <ClInclude Include="Damage.h" />
     <ClInclude Include="aEntity.h" />
