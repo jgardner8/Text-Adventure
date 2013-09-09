@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 #include "Health.h"
+#include "Trap.h"
 
 using namespace std;
 using namespace tinyxml2;
@@ -51,10 +52,22 @@ ZorkGame* ZorkGameFactory::FromFile(const string &worldName) {
 		world->_map.push_back(Room(roomNode->Attribute("desc")));
 		room = &world->_map[world->_map.size()-1]; //alias
 		if (auto id = roomNode->Attribute("id"))
-			roomIds[id] = world->_map.size()-1;
+			roomIds[id] = world->_map.size()-1; //for connections
 		FillInventory(
 			(Inventory*)room->GetComponent("INVENTORY"),
 			roomNode->FirstChildElement("Inventory"));
+		
+		//Add traps (not implemented past a simple demo)
+		if (auto trapNode = roomNode->FirstChildElement("Trap")) {
+			if (int damage = trapNode->IntAttribute("damage")) {
+				bool keyNeeded;
+				if (!trapNode->QueryBoolAttribute("keyNeeded", &keyNeeded)) {
+					Trap trap(damage, keyNeeded);
+					cout << "Created trap with damage=" << damage << ", keyNeeded=" << keyNeeded
+						 << " in room=" << room->desc();
+				}
+			}
+		}
 
 		//Create connections (if applicable)
 		if (auto connectNode = roomNode->FirstChildElement("ConnectTo")) {
@@ -73,8 +86,7 @@ ZorkGame* ZorkGameFactory::FromFile(const string &worldName) {
 				playerNode->FirstChildElement("Inventory"));
 			
 			//Set start health
-			int specifiedHealth = playerNode->IntAttribute("health"); //returns 0 on error
-			if (specifiedHealth != 0)
+			if (int specifiedHealth = playerNode->IntAttribute("health")) //returns 0 on error
 			{
 				Health *health = (Health*)world->_player.GetComponent("HEALTH");
 				health->Hurt(health->HealthLeft() - specifiedHealth);

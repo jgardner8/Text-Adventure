@@ -98,6 +98,7 @@
   <ItemGroup>
     <ClInclude Include="aCommand.h" />
     <ClInclude Include="aComponent.h" />
+    <ClInclude Include="Trap.h" />
     <ClInclude Include="ZorkGameFactory.h" />
     <ClInclude Include="CommandProcessor.h" />
     <ClInclude Include="Damage.h" />

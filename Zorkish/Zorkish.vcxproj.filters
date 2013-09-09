@@ -131,6 +131,9 @@
     <ClInclude Include="ZorkGameFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Trap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="diagrams\MainClasses.cd" />

@@ -14,6 +14,8 @@
 	<Room desc="An old house with a fireplace. There is a bag in the corner and an exit to the south.">
 		<ConnectTo id="1" direction="SOUTH"/>
 
+		<Trap damage="27" keyNeeded="false"/>
+		
 		<Inventory>
 			<Item name="bag" desc="A blue school bag">
 				<Inventory>
