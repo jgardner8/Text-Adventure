@@ -10,7 +10,7 @@ private:
 	Room *_location;
 
 public:
-	Player(Room *location=nullptr);
+	Player(Room *location=nullptr, int startHealth=100);
 
 	Room* location() { return _location; }
 	void location(Room *newLocation) { _location = newLocation; }

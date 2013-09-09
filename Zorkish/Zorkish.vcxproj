@@ -120,6 +120,7 @@
     <ClInclude Include="ZorkGame.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="diagrams\CommandProcessor.cd" />
     <None Include="diagrams\MainClasses.cd" />
   </ItemGroup>

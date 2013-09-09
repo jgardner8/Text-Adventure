@@ -135,5 +135,6 @@
   <ItemGroup>
     <None Include="diagrams\MainClasses.cd" />
     <None Include="diagrams\CommandProcessor.cd" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

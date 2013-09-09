@@ -4,7 +4,7 @@
 			<Item name="sword" desc="A large broadsword with a rusty blade"></Item>
 		</Inventory>
 	
-		<Player>
+		<Player health="66">
 			<Inventory>
 				<Item name="ball" desc="A soccer ball the player should start with."></Item>
 			</Inventory>

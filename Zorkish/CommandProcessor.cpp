@@ -47,6 +47,8 @@ CommandProcessor::CommandProcessor() {
 	aCommand *inventory = new InventoryCommand();
 	_commands["INV"] = inventory;
 	_commands["INVENTORY"] = inventory;
+	_commands["SELF"] = inventory;
+	_commands["ME"] = inventory;
 	_commands["ITEMS"] = inventory;
 	_commands["CARRYING"] = inventory;
 }

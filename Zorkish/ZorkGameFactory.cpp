@@ -1,12 +1,15 @@
 #include "ZorkGameFactory.h"
 #include <iostream>
 #include <stdexcept>
+#include "Health.h"
 
 using namespace std;
 using namespace tinyxml2;
 
 //Fills an Inventory component, given an Inventory XMLElement
 void ZorkGameFactory::FillInventory(Inventory *inv, XMLElement *invNode) {
+	if (inv == nullptr)
+		return;
 	auto itemNode = invNode->FirstChildElement("Item");
 	do {
 		inv->Add(ItemFromXML(itemNode));
@@ -64,10 +67,18 @@ ZorkGame* ZorkGameFactory::FromFile(const string &worldName) {
 			
 		//Create player (if applicable)
 		if (auto playerNode = roomNode->FirstChildElement("Player")) {
-			playerRoomIdx = world->_map.size()-1;
-			FillInventory(
+			playerRoomIdx = world->_map.size()-1; 
+			FillInventory( 
 				(Inventory*)world->_player.GetComponent("INVENTORY"), 
 				playerNode->FirstChildElement("Inventory"));
+			
+			//Set start health
+			int specifiedHealth = playerNode->IntAttribute("health"); //returns 0 on error
+			if (specifiedHealth != 0)
+			{
+				Health *health = (Health*)world->_player.GetComponent("HEALTH");
+				health->Hurt(health->HealthLeft() - specifiedHealth);
+			}
 		}
 	} while (roomNode = roomNode->NextSiblingElement());
 

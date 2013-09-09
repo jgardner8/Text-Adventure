@@ -6,9 +6,9 @@
 
 using namespace std;
 
-Player::Player(Room *location) {
+Player::Player(Room *location, int startHealth) {
 	_location = location;
 	AddComponent(new Inventory());
-	AddComponent(new Health(100, [](){ cout << "You're dead!"; }));
+	AddComponent(new Health(startHealth, [](){ cout << "You're dead!"; }));
 	AddComponent(new Damage(10, 20));
 }

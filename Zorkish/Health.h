@@ -11,7 +11,9 @@ private:
 public:
 	Health(int startHealth, std::function<void()> callOnDeath);
 
-	bool IsAlive() { return _health > 0; }
 	void Hurt(int amount);
+
+	bool IsAlive() { return _health > 0; }
+	int HealthLeft() { return _health; }
 };
 
