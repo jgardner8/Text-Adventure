@@ -4,29 +4,29 @@
 #include "aMessageDispatcher.h"
 #include "MessageDispatcher.h"
 
-//MessageQueue is a singleton that provides the public interface used to queue and dispatch messages. 
+//MessageSystem is a singleton that provides the public interface used to queue and dispatch messages. 
 //It stores a pointer to all of the aMessageDispatcher<MsgType> singleton objects (one per MsgType)
 //	and simply forwards messages to the correct aMessageDispatcher.
-class MessageQueue {
-template<class MsgType> //there's only one MessageQueue; the template refers to the MessageDispatcher friend.
+class MessageSystem {
+template<class MsgType> //there's only one MessageSystem; the template refers to the MessageDispatcher friend.
 friend class MessageDispatcher; //gives access to RegisterDispatcher
 private:
 	std::list<aMessageDispatcher*> _dispatchers;
 
 	//Singleton
-	MessageQueue() { }
-	MessageQueue(MessageQueue const&);
-	void operator=(MessageQueue const&); 
+	MessageSystem() { }
+	MessageSystem(MessageSystem const&);
+	void operator=(MessageSystem const&); 
 
-	//Used by MessageDispatcher<MsgType> to notify the MessageQueue that a new
+	//Used by MessageDispatcher<MsgType> to notify the MessageSystem that a new
 	//MessageDispatcher has been instantiated to dispatch messages of type MsgType. 
 	void RegisterDispatcher(aMessageDispatcher *dispatcher) {
 		_dispatchers.push_back(dispatcher);
 	}
 
 public:
-	static MessageQueue& GetInstance() {
-		static MessageQueue instance;
+	static MessageSystem& GetInstance() {
+		static MessageSystem instance;
 		return instance;
 	}
 	

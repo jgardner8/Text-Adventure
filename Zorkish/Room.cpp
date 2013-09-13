@@ -1,7 +1,7 @@
 #include <stdexcept>
 #include "Room.h"
 #include "Inventory.h"
-#include "MessageQueue.h"
+#include "MessageSystem.h"
 #include "PlayerMovedMessage.h"
 #include "Player.h"
 #include "Trap.h"
@@ -64,6 +64,6 @@ bool Room::MovePlayer(Player &player, string directionStr) {
 		return false;
 	
 	player.location(_adjacencies[direction]);
-	MessageQueue::GetInstance().Dispatch(&PlayerMovedMessage(&player));
+	MessageSystem::GetInstance().Dispatch(&PlayerMovedMessage(&player));
 	return true;
 }

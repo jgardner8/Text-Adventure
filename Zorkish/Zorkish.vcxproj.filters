@@ -146,13 +146,13 @@
     <ClInclude Include="MessageDispatcher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MessageQueue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerMovedMessage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="aMessageDispatcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

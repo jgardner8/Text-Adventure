@@ -103,7 +103,7 @@
     <ClInclude Include="aMessageDispatcher.h" />
     <ClInclude Include="aMessageHandler.h" />
     <ClInclude Include="MessageDispatcher.h" />
-    <ClInclude Include="MessageQueue.h" />
+    <ClInclude Include="MessageSystem.h" />
     <ClInclude Include="PlayerMovedMessage.h" />
     <ClInclude Include="Trap.h" />
     <ClInclude Include="ZorkGameFactory.h" />

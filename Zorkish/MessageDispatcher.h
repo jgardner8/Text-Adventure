@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include "aMessageHandler.h"
-#include "MessageQueue.h"
+#include "MessageSystem.h"
 #include "aMessageDispatcher.h"
 
 template<class MsgType>
@@ -19,7 +19,7 @@ private:
 
 	//Singleton
 	MessageDispatcher() {
-		MessageQueue::GetInstance().RegisterDispatcher(this);
+		MessageSystem::GetInstance().RegisterDispatcher(this);
 	}
 	~MessageDispatcher() {
 		DiscardAll();

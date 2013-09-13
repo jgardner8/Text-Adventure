@@ -21,13 +21,6 @@
       <FileName>MessageDispatcher.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MessageQueue">
-    <Position X="0.5" Y="0.5" Width="4" />
-    <TypeIdentifier>
-      <HashCode>AAgAAEAAAAAAAQAAABAAAAAIRAAAAAAAAAAgAAAAQAA=</HashCode>
-      <FileName>MessageQueue.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="PlayerMovedMessage">
     <Position X="10.25" Y="7" Width="2.75" />
     <TypeIdentifier>
@@ -47,6 +40,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAIAAAADAgAAAAACAAAEBAgwAAQAAAAAA=</HashCode>
       <FileName>Room.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MessageSystem">
+    <Position X="0.5" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAgAQEAAAAAAAQAAAAAAAAAIRAAAAAAAAAAgAAAAQAA=</HashCode>
+      <FileName>MessageSystem.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

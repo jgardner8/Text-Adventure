@@ -1,5 +1,5 @@
 #include "StateManager.h"
-#include "vld.h"
+//#include "vld.h"
 
 int main() {
 	StateManager stateMngr;
