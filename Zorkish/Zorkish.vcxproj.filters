@@ -137,9 +137,6 @@
     <ClInclude Include="Trap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="aMessage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="aMessageHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>

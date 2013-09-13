@@ -30,25 +30,22 @@ public:
 		return instance;
 	}
 	
-	//Memory should be allocated for a queued message using new.
-	template<class MsgType>
-	void Queue(MsgType *message) {
-		MessageDispatcher<MsgType>::GetInstance().Queue(message);
-	}
-
 	//Dispatch doesn't require memory to be allocated for the message.
 	template<class MsgType>
 	void Dispatch(MsgType *message) {
 		MessageDispatcher<MsgType>::GetInstance().Dispatch(message);
 	}
 
+	//Memory should be allocated for a queued message using new. 
+	//This class takes ownership and responsibility for deletion.
+	template<class MsgType>
+	void Enqueue(MsgType *message) {
+		MessageDispatcher<MsgType>::GetInstance().Enqueue(message);
+	}
+
+	//Dispatch everything in queue to recipients. 
 	void DispatchAll() {
 		for (aMessageDispatcher *dispatcher : _dispatchers)
 			dispatcher->DispatchAll();
-	}
-
-	void DiscardAll() {
-		for (aMessageDispatcher *dispatcher : _dispatchers)
-			dispatcher->DiscardAll();
 	}
 };

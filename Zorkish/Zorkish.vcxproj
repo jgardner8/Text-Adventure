@@ -99,7 +99,6 @@
   <ItemGroup>
     <ClInclude Include="aCommand.h" />
     <ClInclude Include="aComponent.h" />
-    <ClInclude Include="aMessage.h" />
     <ClInclude Include="aMessageDispatcher.h" />
     <ClInclude Include="aMessageHandler.h" />
     <ClInclude Include="MessageDispatcher.h" />

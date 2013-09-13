@@ -27,22 +27,26 @@ private:
 	MessageDispatcher(MessageDispatcher const&);
 	void operator=(MessageDispatcher const&);
 
+	void DiscardAll() {
+		for (MsgType *message : _messages)
+			delete message;
+		_messages.clear();
+	}
+
 public:
 	static MessageDispatcher<MsgType>& GetInstance() {
 		static MessageDispatcher<MsgType> instance;
 		return instance;
 	}
 	
-	//Memory should be allocated for a queued message using new.
-	void Queue(MsgType *message) {
-		_messages.push_back(message);
-	}
-
-	//Dispatch doesn't require memory to be allocated for the message.
 	void Dispatch(MsgType *message) {
 		for (aMessageHandler<MsgType> *handler : _handlers) {
 			handler->Handle(message);
 		}
+	}
+
+	void Enqueue(MsgType *message) {
+		_messages.push_back(message);
 	}
 
 	virtual void DispatchAll() override {
@@ -50,12 +54,6 @@ public:
 			Dispatch(message);
 		}
 		DiscardAll();
-	}
-	
-	virtual void DiscardAll() override {
-		for (MsgType *message : _messages)
-			delete message;
-		_messages.clear();
 	}
 
 	void RegisterHandler(aMessageHandler<MsgType> *handler) {
