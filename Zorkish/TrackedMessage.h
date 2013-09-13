@@ -26,15 +26,19 @@ public:
 		delete _message;
 	}
 
-	//TODO: change all of find_ifs to findsq
+	//TODO: change all of find_ifs to finds
 	bool HasRead(aMessageHandler<MsgType> *handler) {
 		return std::find(begin(_readers), end(_readers), handler) != end(_readers);
 	}
 
+	//If you're a handler, providing a pointer to yourself will stop you receiving the
+	//	same messages twice. A nullptr allows anonymous usage of the blackboard.
 	MsgType* Read(aMessageHandler<MsgType> *handler) {
-		if (HasRead(handler))
-			return nullptr;
-		_readers.push_back(handler);
+		if (handler) {
+			if (HasRead(handler))
+				return nullptr;
+			_readers.push_back(handler);
+		}
 		return _message;
 	}
 

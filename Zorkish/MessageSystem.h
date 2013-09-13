@@ -62,10 +62,11 @@ public:
 		MessageDispatcher<MsgType>::GetInstance().Write(message);
 	}
 
-	//Read all messages concerning you on the blackboard.
+	//Get all messages concerning you from the blackboard.
 	//Once they've been read you won't be able to read them again!
+	//Providing a nullptr allows anonymous usage of the blackboard; be careful not to keep reading the same messages.
 	template<class MsgType>
-	std::vector<MsgType*> Read(aMessageHandler<MsgType> *handler) {
+	std::vector<MsgType*> Read(aMessageHandler<MsgType> *handler=nullptr) {
 		return MessageDispatcher<MsgType>::GetInstance().Read(handler);
 	}
 };
