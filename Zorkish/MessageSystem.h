@@ -1,6 +1,6 @@
 #pragma once
 
-#include <list>
+#include <vector>
 #include "aMessageDispatcher.h"
 #include "MessageDispatcher.h"
 
@@ -11,7 +11,7 @@ class MessageSystem {
 template<class MsgType> //there's only one MessageSystem; the template refers to the MessageDispatcher friend.
 friend class MessageDispatcher; //gives access to RegisterDispatcher
 private:
-	std::list<aMessageDispatcher*> _dispatchers;
+	std::vector<aMessageDispatcher*> _dispatchers;
 
 	//Singleton
 	MessageSystem() { }
@@ -30,12 +30,14 @@ public:
 		return instance;
 	}
 	
+	//Immediately dispatch a message.
 	//Dispatch doesn't require memory to be allocated for the message.
 	template<class MsgType>
 	void Dispatch(MsgType *message) {
 		MessageDispatcher<MsgType>::GetInstance().Dispatch(message);
 	}
 
+	//Add a message to the message queue, to be dispatched on next DispatchAll() call.
 	//Memory should be allocated for a queued message using new. 
 	//This class takes ownership and responsibility for deletion.
 	template<class MsgType>
@@ -43,9 +45,24 @@ public:
 		MessageDispatcher<MsgType>::GetInstance().Enqueue(message);
 	}
 
-	//Dispatch everything in queue to recipients. 
+	//Dispatch all messages in queue to recipients. 
 	void DispatchAll() {
 		for (aMessageDispatcher *dispatcher : _dispatchers)
 			dispatcher->DispatchAll();
+	}
+
+	//Write a message onto the blackboard.
+	//Memory should be allocated for your message using new. 
+	//This class takes ownership and responsibility for deletion.
+	template<class MsgType>
+	void Write(MsgType *message) {
+		aMessageDispatcher<MsgType>::GetInstance().Write(message);
+	}
+
+	//Read all messages concerning you on the blackboard.
+	//Once they've been read you won't be able to read them again!
+	template<class MsgType>
+	std::vector<MsgType*> Read(aMessageHandler<MsgType> *handler) {
+		return aMessageDispatcher<MsgType>::GetInstance().Read(handler);
 	}
 };
