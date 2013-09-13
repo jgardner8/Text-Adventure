@@ -17,7 +17,7 @@ template<class MsgType>
 class MessageDispatcher : public aMessageDispatcher {
 private:
 	std::vector<MsgType*> _messages;
-	std::list<TrackedMessage<MsgType>> _blackboard;
+	std::list<TrackedMessage<MsgType>*> _blackboard;
 	std::vector<aMessageHandler<MsgType>*> _handlers;
 
 	//Singleton
@@ -26,6 +26,9 @@ private:
 	}
 	~MessageDispatcher() {
 		DiscardAll();
+		for (auto trackedMsg : _blackboard)
+			delete trackedMsg;
+		_blackboard.clear();
 	}
 	MessageDispatcher(MessageDispatcher const&);
 	void operator=(MessageDispatcher const&);
@@ -39,21 +42,25 @@ private:
 	//Pruning the board currently uses an inefficient O(n^3) algorithm. It's a good thing it's not used much.
 	void PruneBoard() {
 		std::list<aMessageHandler<MsgType>*> readers;
+		std::list<TrackedMessage<MsgType>*> toErase;
 		bool allRead = true;
 		for (auto trackedMsg : _blackboard) {
-			readers = trackedMsg.readers();
+			readers = trackedMsg->readers();
 			for (auto handler : _handlers) {
-				if (!std::find_if(begin(readers), end(readers), 
-				[handler] (aMessageHandler<MsgType*> element) { return handler == element; })) {
+				if (std::find(begin(readers), end(readers), handler) == end(readers)) {
 					allRead = false;
 					break;
 				}
 			}
 			if (allRead) {
-				std::remove_if(begin(_blackboard), end(_blackboard), 
-					[trackedMsg] (element) { return trackedMsg == element; })
+				toErase.push_back(trackedMsg);
 			}
 			allRead = true;
+		}
+
+		for (auto trackedMsg : toErase) {
+			delete trackedMsg;
+			_blackboard.erase( std::remove(begin(_blackboard), end(_blackboard), trackedMsg) , end(_blackboard));
 		}
 	}
 
@@ -84,14 +91,16 @@ public:
 
 	///Blackboard
 	void Write(MsgType *message) {
-		_blackboard.push_back(TrackedMessage<MsgType>(message));
+		_blackboard.push_back(new TrackedMessage<MsgType>(message));
 	}
 
 	std::vector<MsgType*> Read(aMessageHandler<MsgType> *handler) {
+		PruneBoard(); //this happens at the start so we don't delete any messages we're returning.
 		std::vector<MsgType*> messages;
-		for (auto trackedMsg : _blackboard)
-			messages.push_back(trackedMsg.Read(handler));
-		PruneBoard();
+		for (auto trackedMsg : _blackboard) {
+			if (MsgType *message = trackedMsg->Read(handler))
+				messages.push_back(message);
+		}
 		return messages;
 	}
 	///
@@ -101,7 +110,6 @@ public:
 	}
 
 	void UnregisterHandler(aMessageHandler<MsgType> *handler) {
-		std::remove_if(begin(_handlers), end(_handlers), 
-			[handler] (aMessageHandler<MsgType> *element) { return handler == element; });
+		_handlers.erase( std::remove(begin(_handlers), end(_handlers), handler), end(_handlers));
 	}
 };

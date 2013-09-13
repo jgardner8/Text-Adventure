@@ -16,13 +16,19 @@ private:
 	std::list<aMessageHandler<MsgType>*> _readers;
 
 public:
+	//Memory should be allocated for your message using new. 
+	//This class takes ownership and responsibility for deletion.
 	TrackedMessage(MsgType *message) {
 		_message = message;
 	}
 
+	~TrackedMessage() {
+		delete _message;
+	}
+
+	//TODO: change all of find_ifs to findsq
 	bool HasRead(aMessageHandler<MsgType> *handler) {
-		return std::find_if(begin(_readers), end(_readers),
-			[handler] (aMessageHandler<MsgType> *element) { return element == handler; });
+		return std::find(begin(_readers), end(_readers), handler) != end(_readers);
 	}
 
 	MsgType* Read(aMessageHandler<MsgType> *handler) {

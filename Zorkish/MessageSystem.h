@@ -4,6 +4,9 @@
 #include "aMessageDispatcher.h"
 #include "MessageDispatcher.h"
 
+template<class MsgType>
+class aMessageHandler;
+
 //MessageSystem is a singleton that provides the public interface used to queue and dispatch messages. 
 //It stores a pointer to all of the aMessageDispatcher<MsgType> singleton objects (one per MsgType)
 //	and simply forwards messages to the correct aMessageDispatcher.
@@ -56,13 +59,13 @@ public:
 	//This class takes ownership and responsibility for deletion.
 	template<class MsgType>
 	void Write(MsgType *message) {
-		aMessageDispatcher<MsgType>::GetInstance().Write(message);
+		MessageDispatcher<MsgType>::GetInstance().Write(message);
 	}
 
 	//Read all messages concerning you on the blackboard.
 	//Once they've been read you won't be able to read them again!
 	template<class MsgType>
 	std::vector<MsgType*> Read(aMessageHandler<MsgType> *handler) {
-		return aMessageDispatcher<MsgType>::GetInstance().Read(handler);
+		return MessageDispatcher<MsgType>::GetInstance().Read(handler);
 	}
 };
