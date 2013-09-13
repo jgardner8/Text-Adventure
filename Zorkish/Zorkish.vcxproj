@@ -78,6 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Trap.cpp" />
     <ClCompile Include="ZorkGameFactory.cpp" />
     <ClCompile Include="CommandProcessor.cpp" />
     <ClCompile Include="Damage.cpp" />
@@ -98,6 +99,12 @@
   <ItemGroup>
     <ClInclude Include="aCommand.h" />
     <ClInclude Include="aComponent.h" />
+    <ClInclude Include="aMessage.h" />
+    <ClInclude Include="aMessageDispatcher.h" />
+    <ClInclude Include="aMessageHandler.h" />
+    <ClInclude Include="MessageDispatcher.h" />
+    <ClInclude Include="MessageQueue.h" />
+    <ClInclude Include="PlayerMovedMessage.h" />
     <ClInclude Include="Trap.h" />
     <ClInclude Include="ZorkGameFactory.h" />
     <ClInclude Include="CommandProcessor.h" />
@@ -121,7 +128,7 @@
     <ClInclude Include="ZorkGame.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <None Include="diagrams\MessageSystem.cd" />
     <None Include="diagrams\CommandProcessor.cd" />
     <None Include="diagrams\MainClasses.cd" />
   </ItemGroup>

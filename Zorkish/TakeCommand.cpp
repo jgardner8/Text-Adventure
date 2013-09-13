@@ -1,4 +1,5 @@
 #include "TakeCommand.h"
+#include "Room.h"
 
 using namespace std;
 

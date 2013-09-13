@@ -3,6 +3,9 @@
 #include <stdexcept>
 #include "Health.h"
 #include "Trap.h"
+#include "Inventory.h"
+#include "ZorkGame.h"
+#include "Room.h"
 
 using namespace std;
 using namespace tinyxml2;
@@ -62,9 +65,7 @@ ZorkGame* ZorkGameFactory::FromFile(const string &worldName) {
 			if (int damage = trapNode->IntAttribute("damage")) {
 				bool keyNeeded;
 				if (!trapNode->QueryBoolAttribute("keyNeeded", &keyNeeded)) {
-					Trap trap(damage, keyNeeded);
-					cout << "Created trap with damage=" << damage << ", keyNeeded=" << keyNeeded
-						 << " in room=" << room->desc();
+					room->AddTrap(new Trap(room, damage, keyNeeded));
 				}
 			}
 		}

@@ -1,8 +1,9 @@
 #pragma once
 
+#include <string>
 #include "CommandProcessor.h"
 #include "ZorkGameFactory.h"
-#include <string>
+#include "Room.h"
 
 class ZorkGame {
 friend class ZorkGameFactory;

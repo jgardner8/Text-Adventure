@@ -1,6 +1,10 @@
+#include <stdexcept>
 #include "Room.h"
 #include "Inventory.h"
-#include <stdexcept>
+#include "MessageQueue.h"
+#include "PlayerMovedMessage.h"
+#include "Player.h"
+#include "Trap.h"
 
 using namespace std;
 
@@ -13,6 +17,9 @@ Room::~Room() {
 	//Destroy all links back to here
 	for (auto kvp : _adjacencies) 
 		kvp.second->_adjacencies.erase(GetOppositeDirection(kvp.first));
+	//Destroy all traps
+	for (Trap *trap : _traps)
+		delete trap;
 }
 
 Direction Room::GetOppositeDirection(Direction dir) {
@@ -57,5 +64,6 @@ bool Room::MovePlayer(Player &player, string directionStr) {
 		return false;
 	
 	player.location(_adjacencies[direction]);
+	MessageQueue::GetInstance().Dispatch(&PlayerMovedMessage(&player));
 	return true;
 }

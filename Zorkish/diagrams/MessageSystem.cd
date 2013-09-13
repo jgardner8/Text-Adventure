@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="aMessageDispatcher">
+    <Position X="6.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>aMessageDispatcher.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="aMessageHandler&lt;MsgType&gt;">
+    <Position X="10.25" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAABAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>aMessageHandler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MessageDispatcher&lt;MsgType&gt;">
+    <Position X="5" Y="2.25" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>CAgAAEAAAAAAAQAAAAEACAAIRAAAAAAAEAAgAAAAAQA=</HashCode>
+      <FileName>MessageDispatcher.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MessageQueue">
+    <Position X="0.5" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAgAAEAAAAAAAQAAABAAAAAIRAAAAAAAAAAgAAAAQAA=</HashCode>
+      <FileName>MessageQueue.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerMovedMessage">
+    <Position X="10.25" Y="7" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>PlayerMovedMessage.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trap">
+    <Position X="9.75" Y="4.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAEAAAAAAAAAQAAAAAAAAAAAIAACAAAAAAAAA=</HashCode>
+      <FileName>Trap.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Room" Collapsed="true">
+    <Position X="7.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAADAgAAAAACAAAEBAgwAAQAAAAAA=</HashCode>
+      <FileName>Room.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

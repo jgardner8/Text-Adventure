@@ -63,6 +63,9 @@
     <ClCompile Include="ZorkGameFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Trap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StateManager.h">
@@ -134,10 +137,28 @@
     <ClInclude Include="Trap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="aMessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="aMessageHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageDispatcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMovedMessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="aMessageDispatcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="diagrams\MainClasses.cd" />
     <None Include="diagrams\CommandProcessor.cd" />
-    <None Include="ClassDiagram.cd" />
+    <None Include="diagrams\MessageSystem.cd" />
   </ItemGroup>
 </Project>

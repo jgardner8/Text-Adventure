@@ -1,15 +1,21 @@
 #pragma once
 
-//Not implemented. 
-//Used only to set start values to demonstrate part of Configuration Pattern spike.
-class Trap {
+#include <iostream>
+#include <random>
+#include "aMessageHandler.h"
+#include "Player.h"
+#include "PlayerMovedMessage.h"
+#include "Health.h"
+
+class Room;
+
+class Trap : public aMessageHandler<PlayerMovedMessage> {
 private:
+	Room *_location;
 	int _damage;
 	bool _keyNeeded;
 
 public:
-	Trap(int damage, bool keyNeeded=false) {
-		_damage = damage;
-		_keyNeeded = keyNeeded;
-	}
+	Trap(Room *location, int damage, bool keyNeeded=false);
+	virtual void Handle(PlayerMovedMessage *message) override;
 };

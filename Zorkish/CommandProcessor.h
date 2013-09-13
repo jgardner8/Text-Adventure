@@ -12,5 +12,5 @@ public:
 	CommandProcessor();
 	~CommandProcessor();
 
-	std::string CommandProcessor::Process(Player &player, const std::string &input); //returns msg intended for user
+	std::string Process(Player &player, const std::string &input); //returns msg intended for user
 };

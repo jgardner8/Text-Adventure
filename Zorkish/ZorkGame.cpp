@@ -3,6 +3,7 @@
 #include "Item.h"
 #include "Inventory.h"
 #include "Health.h"
+#include "Room.h"
 #include <iostream>
 
 using namespace std;

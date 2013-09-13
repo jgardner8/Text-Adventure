@@ -1,8 +1,11 @@
 #pragma once
 
-#include "ZorkGame.h"
-#include "Inventory.h"
 #include "lib/tinyxml2.h"
+#include <string>
+
+class ZorkGame;
+class Inventory;
+class Item;
 
 class ZorkGameFactory {
 private:

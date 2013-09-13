@@ -1,4 +1,5 @@
 #include "MoveCommand.h"
+#include "Room.h"
 
 using namespace std;
 
