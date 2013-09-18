@@ -12,7 +12,7 @@ using namespace tinyxml2;
 
 //Fills an Inventory component, given an Inventory XMLElement
 void ZorkGameFactory::FillInventory(Inventory *inv, XMLElement *invNode) {
-	if (inv == nullptr)
+	if (!inv || !invNode)
 		return;
 	auto itemNode = invNode->FirstChildElement("Item");
 	do {

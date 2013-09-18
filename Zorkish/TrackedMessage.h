@@ -26,7 +26,6 @@ public:
 		delete _message;
 	}
 
-	//TODO: change all of find_ifs to finds
 	bool HasRead(aMessageHandler<MsgType> *handler) {
 		return std::find(begin(_readers), end(_readers), handler) != end(_readers);
 	}

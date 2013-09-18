@@ -155,6 +155,12 @@
     <ClInclude Include="TrackedMessage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="lib\tinydir.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StringFunc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="diagrams\MainClasses.cd" />

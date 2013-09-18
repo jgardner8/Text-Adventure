@@ -1,7 +1,10 @@
+#include <iostream>
+#include <algorithm>
 #include "StateManager.h"
 #include "Input.h"
 #include "ZorkGameFactory.h"
-#include <iostream>
+#include "StringFunc.h"
+#include "lib/tinydir.h"
 
 using namespace std;
 
@@ -59,22 +62,46 @@ void StateManager::HelpState() {
 		_currentState = &StateManager::MenuState;
 }
 
-void StateManager::SelectAdventureState() {
-	cout << "Select Adventure State" << endl
-		 << "\t[E]pic" << endl
-		 << "\t[N]ot so epic" << endl
-	     << "\t[Q]uit" << endl;
+vector<string> StateManager::GetWorldList() {
+	tinydir_dir dir;
+	tinydir_open(&dir, "worlds/");
 
-	char input = GetInputBlocking();
-	if (input == 'E' || input == 'N') {
+	vector<string> worldNames;
+	while (dir.has_next)
+	{
+		tinydir_file file;
+		tinydir_readfile(&dir, &file);
+
+		if (!file.is_dir) {
+			string name(file.name);
+			worldNames.push_back(name.substr(0, name.length() - 4)); //remove .xml
+		}
+
+		tinydir_next(&dir);
+	}
+
+	tinydir_close(&dir);
+	return worldNames;
+}
+
+void StateManager::SelectAdventureState() {
+	cout << "Select a world:" << endl;
+	vector<string> worldNames = GetWorldList();
+	for (string s : worldNames)
+		cout << "\t" << s << endl;
+	cout << endl << "[Q]uit" << endl;
+
+	string input = GetInputStrBlocking();
+	//if input is valid world
+	if (find_if(begin(worldNames), end(worldNames), [&input] (string world) { return input == ToUpper(world); }) != end(worldNames)) {
 		if (_currentAdventure != input) {
-			if (_zorkGame != nullptr)
+			if (_zorkGame)
 				delete _zorkGame;
-			_zorkGame = ZorkGameFactory::FromFile("test"); 
+			_zorkGame = ZorkGameFactory::FromFile(input); 
 			_currentAdventure = input;
 		}
 		_currentState = &StateManager::GameplayState;
-	} else if (input == 'Q')
+	} else if (input == "Q" || input == "QUIT")
 		_currentState = &StateManager::MenuState;
 }
 

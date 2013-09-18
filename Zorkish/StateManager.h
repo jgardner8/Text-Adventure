@@ -4,7 +4,7 @@
 
 class StateManager {
 private:
-	char _currentAdventure;
+	std::string _currentAdventure;
 	ZorkGame *_zorkGame;
 
 	//State Pointer
@@ -17,6 +17,8 @@ private:
 	void GameplayState();
 	void HighScoreState();
 	void HallOfFameState();
+
+	std::vector<std::string> GetWorldList(); //used to get list of world files for SelectAdventureState()
 
 public:
 	StateManager();

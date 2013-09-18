@@ -11,7 +11,6 @@ using namespace std;
 string ZorkGame::Run() {
 	cout << "Welcome to Zorkish!" << endl
 	     << "Enter menu to go back to the main menu at any time." << endl << endl;
-	FlushCin();
 
 	cout << _player.location()->desc() << endl;
 	
