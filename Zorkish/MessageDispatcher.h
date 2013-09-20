@@ -3,7 +3,6 @@
 #include <vector>
 #include <list>
 #include <algorithm>
-#include "aMessageHandler.h"
 #include "MessageSystem.h"
 #include "aMessageDispatcher.h"
 #include "TrackedMessage.h"
@@ -39,28 +38,18 @@ private:
 		_messages.clear();
 	}
 
-	//Pruning the board currently uses an inefficient O(n^3) algorithm. It's a good thing it's not used much.
+	//Removes messages that have been read by all desired recipients.
 	void PruneBoard() {
-		std::list<aMessageHandler<MsgType>*> readers;
-		std::list<TrackedMessage<MsgType>*> toErase;
-		bool allRead = true;
+		std::vector<TrackedMessage<MsgType>*> toErase;
+
 		for (auto trackedMsg : _blackboard) {
-			readers = trackedMsg->readers();
-			for (auto handler : _handlers) {
-				if (std::find(begin(readers), end(readers), handler) == end(readers)) {
-					allRead = false;
-					break;
-				}
-			}
-			if (allRead) {
+			if (trackedMsg->readers().size() == _handlers.size())
 				toErase.push_back(trackedMsg);
-			}
-			allRead = true;
 		}
 
 		for (auto trackedMsg : toErase) {
-			delete trackedMsg;
 			_blackboard.erase( std::remove(begin(_blackboard), end(_blackboard), trackedMsg) , end(_blackboard));
+			delete trackedMsg;
 		}
 	}
 

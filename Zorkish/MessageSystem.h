@@ -22,7 +22,8 @@ private:
 	void operator=(MessageSystem const&); 
 
 	//Used by MessageDispatcher<MsgType> to notify the MessageSystem that a new
-	//MessageDispatcher has been instantiated to dispatch messages of type MsgType. 
+	//  MessageDispatcher has been instantiated to dispatch messages of type MsgType. 
+	//Only used for the DispatchAll() method, like aMessageHandler.
 	void RegisterDispatcher(aMessageDispatcher *dispatcher) {
 		_dispatchers.push_back(dispatcher);
 	}
@@ -49,6 +50,10 @@ public:
 	}
 
 	//Dispatch all messages in queue to recipients. 
+	//This method is the sole reason we have to have a aMessageDispatcher class 
+	//  and a list of dispatchers. It also means the dispatchers have vectors of messages to send later. 
+	//While removing this method could greatly simplify the structure of the system, this method and the 
+	//  surrounding infrastructure make it really easy to add delayed messages in the future. 
 	void DispatchAll() {
 		for (aMessageDispatcher *dispatcher : _dispatchers)
 			dispatcher->DispatchAll();
